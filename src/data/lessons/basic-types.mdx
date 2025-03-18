@@ -1,0 +1,94 @@
+# Tipos Básicos en TypeScript
+
+TypeScript extiende JavaScript agregando tipos estáticos. Aquí están los tipos básicos más importantes:
+
+## Tipos Primitivos
+
+```typescript
+// Boolean
+let isDone: boolean = false;
+
+// Number
+let decimal: number = 6;
+let hex: number = 0xf00d;
+let binary: number = 0b1010;
+let octal: number = 0o744;
+
+// String
+let color: string = "blue";
+let fullName: string = `Bob Bobbington`;
+
+// Array
+let list: number[] = [1, 2, 3];
+let list2: Array<number> = [1, 2, 3];
+
+// Tuple
+let x: [string, number] = ["hello", 10];
+
+// Enum
+enum Color {
+  Red,
+  Green,
+  Blue,
+}
+let c: Color = Color.Green;
+
+// Any
+let notSure: any = 4;
+notSure = "maybe a string instead";
+notSure = false;
+
+// Void
+function warnUser(): void {
+  console.log("This is my warning message");
+}
+
+// Null y Undefined
+let u: undefined = undefined;
+let n: null = null;
+
+// Never
+function error(message: string): never {
+  throw new Error(message);
+}
+
+// Object
+let obj: object = {};
+```
+
+## Aserciones de Tipo
+
+Hay dos sintaxis para las aserciones de tipo:
+
+```typescript
+let someValue: any = "this is a string";
+let strLength: number = (<string>someValue).length;
+
+// O usando as
+let strLength2: number = (someValue as string).length;
+```
+
+## Type Inference
+
+TypeScript puede inferir tipos automáticamente:
+
+```typescript
+let x = 3; // TypeScript infiere que x es number
+let arr = [1, 2, 3]; // TypeScript infiere que arr es number[]
+```
+
+## Union Types
+
+Puedes declarar variables que pueden tener múltiples tipos:
+
+```typescript
+let multiType: number | string;
+multiType = 20; // válido
+multiType = "twenty"; // válido
+```
+
+## Ejercicios Prácticos
+
+1. Crea una función que acepte un string o number y retorne su longitud si es string o el número multiplicado por 2 si es number.
+2. Define un enum para los días de la semana y úsalo en una función que determine si es día laboral.
+3. Crea un array que pueda contener strings y números, y recórrelo mostrando el tipo de cada elemento. 

@@ -1,0 +1,120 @@
+# Genéricos en TypeScript
+
+Los genéricos nos permiten escribir código reutilizable que puede trabajar con múltiples tipos.
+
+## Funciones Genéricas
+
+```typescript
+function identity<T>(arg: T): T {
+  return arg;
+}
+
+// Uso explícito del tipo
+let output1 = identity<string>("myString");
+
+// Inferencia de tipo
+let output2 = identity("myString");
+```
+
+## Interfaces Genéricas
+
+```typescript
+interface GenericIdentityFn<T> {
+  (arg: T): T;
+}
+
+interface Box<T> {
+  value: T;
+}
+
+let box: Box<string> = { value: "hello" };
+```
+
+## Clases Genéricas
+
+```typescript
+class GenericNumber<T> {
+  zeroValue: T;
+  add: (x: T, y: T) => T;
+
+  constructor(zero: T, addFn: (x: T, y: T) => T) {
+    this.zeroValue = zero;
+    this.add = addFn;
+  }
+}
+
+let stringNumeric = new GenericNumber<string>("", (x: string, y: string) => x + y);
+```
+
+## Restricciones de Tipo
+
+Podemos restringir los tipos que pueden ser usados con genéricos:
+
+```typescript
+interface Lengthwise {
+  length: number;
+}
+
+function loggingIdentity<T extends Lengthwise>(arg: T): T {
+  console.log(arg.length); // Ahora sabemos que .length existe
+  return arg;
+}
+```
+
+## Tipos Genéricos Múltiples
+
+```typescript
+function pair<T, U>(first: T, second: U): [T, U] {
+  return [first, second];
+}
+
+let p = pair<string, number>("hello", 42);
+```
+
+## Genéricos con Tipos por Defecto
+
+```typescript
+interface ResponseData<T = any> {
+  data: T;
+  status: number;
+  message: string;
+}
+
+// No necesitas especificar el tipo
+let response: ResponseData = {
+  data: "hello",
+  status: 200,
+  message: "OK"
+};
+```
+
+## Patrones Comunes con Genéricos
+
+### Factory Pattern
+
+```typescript
+function create<T>(c: { new(): T }): T {
+  return new c();
+}
+
+class BeeKeeper {
+  hasMask: boolean = true;
+}
+
+class Animal {
+  numLegs: number = 4;
+}
+
+class Bee extends Animal {
+  keeper: BeeKeeper = new BeeKeeper();
+}
+
+let bee = create(Bee);
+```
+
+## Ejercicios Prácticos
+
+1. Implementa una función genérica que tome un array y retorne el último elemento.
+2. Crea una clase genérica Stack que implemente push, pop y peek.
+3. Implementa una función map genérica que tome un array y una función de transformación.
+4. Crea una interfaz genérica para un servicio de caché que pueda almacenar diferentes tipos de datos. 

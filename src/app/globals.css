@@ -1,0 +1,276 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+ 
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+ 
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+ 
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+ 
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+ 
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+ 
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 215 20.2% 65.1%;
+ 
+    --radius: 0.5rem;
+
+    --code-bg: 220 13% 91%;
+    --code-color: 222.2 84% 4.9%;
+  }
+ 
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+ 
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+ 
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+ 
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+ 
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+ 
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+ 
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+ 
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 85.7% 97.3%;
+ 
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 217.2 32.6% 17.5%;
+
+    --code-bg: 217.2 32.6% 17.5%;
+    --code-color: 210 40% 98%;
+  }
+}
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Ajustes para el contenedor de código */
+.code-block {
+  position: relative;
+  margin: 1rem 0;
+}
+
+/* Título del bloque de código */
+.code-block::before {
+  content: attr(data-title);
+  position: absolute;
+  top: -0.8rem;
+  left: 1rem;
+  padding: 0.2rem 0.8rem;
+  background: #2d2d2d;
+  color: #e6e6e6;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 0.25rem;
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Ajustes para los números de línea */
+.line-numbers .line-numbers-rows {
+  padding: 1rem 0;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.line-numbers .line-numbers-rows > span:before {
+  color: rgba(255, 255, 255, 0.5);
+  padding: 0 1rem;
+}
+
+/* Ajustes para el tema oscuro de Prism */
+pre[class*="language-"] {
+  font-family: 'JetBrains Mono', ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Monaco, 'Courier New', monospace !important;
+  font-size: 0.95rem !important;
+  line-height: 1.6 !important;
+  text-shadow: none !important;
+  margin: 0 !important;
+  background: #2d2d2d !important;
+  border-radius: 0.5rem !important;
+}
+
+code[class*="language-"] {
+  text-shadow: none !important;
+  color: #e6e6e6 !important;
+}
+
+/* Estilos específicos para elementos de código */
+.token.comment {
+  color: #6a9955 !important;
+  font-style: italic !important;
+}
+
+.token.keyword {
+  color: #569cd6 !important;
+  font-weight: 600 !important;
+}
+
+.token.string {
+  color: #ce9178 !important;
+}
+
+.token.number {
+  color: #b5cea8 !important;
+}
+
+.token.boolean {
+  color: #569cd6 !important;
+  font-weight: 600 !important;
+}
+
+.token.function {
+  color: #dcdcaa !important;
+}
+
+.token.class-name {
+  color: #4ec9b0 !important;
+}
+
+.token.constant {
+  color: #4fc1ff !important;
+}
+
+.token.operator {
+  color: #d11111 !important;
+  background-color: transparent !important;
+}
+
+.token.punctuation {
+  color: #d4d4d4 !important;
+}
+
+/* Estilos para títulos y subtítulos en el código */
+h1, h2, h3, h4 {
+  color: #569cd6 !important;
+  font-weight: 600 !important;
+  margin-top: 1.5em !important;
+  margin-bottom: 0.5em !important;
+}
+
+/* Estilos para comentarios especiales */
+.token.comment[data-type="block"] {
+  color: #6a9955 !important;
+  font-style: italic !important;
+  display: block !important;
+  margin: 0.5em 0 !important;
+}
+
+/* Estilos para el código */
+pre {
+  background-color: #1e1e1e !important;
+  color: #d4d4d4 !important;
+  padding: 1rem !important;
+  border-radius: 0.5rem !important;
+  overflow-x: auto !important;
+}
+
+code {
+  font-family: 'Fira Code', monospace !important;
+  font-size: 0.9rem !important;
+}
+
+/* Resaltado de sintaxis */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #6a9955;
+}
+
+.token.punctuation {
+  color: #d4d4d4;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #b5cea8;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #ce9178;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: #d4d4d4;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: #569cd6;
+}
+
+.token.function,
+.token.class-name {
+  color: #dcdcaa;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  color: #d16969;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}

@@ -1,0 +1,119 @@
+# Interfaces y Tipos en TypeScript
+
+Las interfaces y los tipos son fundamentales en TypeScript para definir contratos en tu código y crear tipos personalizados.
+
+## Interfaces
+
+Las interfaces definen la estructura que debe tener un objeto:
+
+```typescript
+interface User {
+  name: string;
+  age: number;
+  email?: string; // Propiedad opcional
+  readonly id: number; // Propiedad de solo lectura
+}
+
+const user: User = {
+  name: "Juan",
+  age: 30,
+  id: 1
+};
+```
+
+### Extensión de Interfaces
+
+Las interfaces pueden extender otras interfaces:
+
+```typescript
+interface Animal {
+  name: string;
+}
+
+interface Dog extends Animal {
+  breed: string;
+}
+
+const dog: Dog = {
+  name: "Rex",
+  breed: "German Shepherd"
+};
+```
+
+## Type Aliases
+
+Los type aliases permiten crear nuevos nombres para tipos:
+
+```typescript
+type Point = {
+  x: number;
+  y: number;
+};
+
+type ID = string | number;
+
+type UserWithPoint = User & Point; // Intersection Type
+```
+
+## Diferencias entre Interface y Type
+
+```typescript
+// Las interfaces se pueden extender
+interface Animal {
+  name: string;
+}
+interface Bear extends Animal {
+  honey: boolean;
+}
+
+// Los tipos se pueden unir
+type Animal = {
+  name: string;
+}
+type Bear = Animal & {
+  honey: boolean;
+}
+```
+
+## Index Signatures
+
+Puedes definir tipos para propiedades dinámicas:
+
+```typescript
+interface StringMap {
+  [key: string]: string;
+}
+
+const map: StringMap = {
+  "key1": "value1",
+  "key2": "value2"
+};
+```
+
+## Utility Types
+
+TypeScript incluye varios tipos utilitarios:
+
+```typescript
+interface Todo {
+  title: string;
+  description: string;
+  completed: boolean;
+}
+
+// Partial hace todas las propiedades opcionales
+type PartialTodo = Partial<Todo>;
+
+// Pick selecciona ciertas propiedades
+type TodoPreview = Pick<Todo, "title" | "completed">;
+
+// Omit excluye ciertas propiedades
+type TodoWithoutDescription = Omit<Todo, "description">;
+```
+
+## Ejercicios Prácticos
+
+1. Crea una interfaz para representar un producto con propiedades como id, nombre, precio y categoría.
+2. Extiende la interfaz anterior para crear un ProductoConDescuento que incluya el porcentaje de descuento.
+3. Crea un type alias que pueda representar tanto un producto como un servicio.
+4. Implementa una función que acepte un objeto que cumpla con la interfaz de producto y calcule el precio final con descuento. 
