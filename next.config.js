@@ -6,9 +6,6 @@ const nextConfig = {
     unoptimized: true,
     domains: ['localhost'],
   },
-  experimental: {
-    serverActions: true,
-  },
   output: 'standalone',
 }
 

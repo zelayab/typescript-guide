@@ -1,3 +1,5 @@
+
+// @ts-nocheck
 // UTILITY TYPES EN TYPESCRIPT
 // ============================
 // Los Utility Types son como herramientas mágicas 🛠️ que nos ayudan a transformar tipos

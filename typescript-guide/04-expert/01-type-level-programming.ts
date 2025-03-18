@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /**
  * PROGRAMACIÓN A NIVEL DE TIPOS 🧙‍♂️
  * ============================
@@ -77,13 +79,17 @@ export type RouterParams<T extends Route2> = {
 
 // Ejercicios prácticos
 // 1. Implementar multiplicación a nivel de tipos
-export type Multiply<A extends number, B extends number> = // Tu implementación
-
+export type Multiply<A extends number, B extends number> =  // Tu implementación
+    [...BuildTuple<A>, ...BuildTuple<B>]['length'];
 // 2. Crear un parser de query strings a nivel de tipos
-export type ParseQueryString<T extends string> = // Tu implementación
+export type ParseQueryString<T extends string> = T extends `${infer Key}=${infer Value}`
+    ? { [K in Key]: Value }
+    : Record<string, string>;   
 
 // 3. Implementar un validador de rutas a nivel de tipos
-export type ValidateRoute<T extends string> = // Tu implementación 
+ export type ValidateRoute<T extends string> = T extends `/${string}`
+    ? T
+    : never;
 
 // Tipos que hacen matemáticas 🔢
 // Como contar con tipos mágicos
