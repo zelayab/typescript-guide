@@ -27,7 +27,16 @@ const esEstable: boolean = true;`,
   // Tu código aquí
 }`,
             solution: `function validarDato(dato: unknown): string {
-  if (typeof dato === "string") return "
+  if (typeof dato === "string") return "Es una cadena";
+  if (typeof dato === "number") return "Es un número";
+  if (typeof dato === "boolean") return "Es un booleano";
+  return "Tipo desconocido";
+}`
+          }
+        ]
+      }
+    ]
+  }
 }
 
 export function getContentForSection(section: string): LevelContent | null {

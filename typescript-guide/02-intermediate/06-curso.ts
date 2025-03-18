@@ -1,3 +1,8 @@
+//sacamos la validación de los errores para que al compilar el build no salga ningún error
+//tsc --noEmit
+//tsc --noEmit false
+
+
 // Lexical this : se usa para referirse al objeto que está fuera de la función
 
 const user = {
@@ -20,11 +25,11 @@ type Point = {
 const point: Point = { x: 10, y: 20 };
 
 //Variable assignment
-point = { x: 30, y: 40 }; // Error: Cannot assign to 'point' because it is a constant.
+// oint = { x: 30, y: 40 }; // Error: Cannot assign to 'point' because it is a constant.
 
 
 //Property assignment
-point.x = 30; // Error: Cannot assign to 'x' because it is a constant.
+//point.x = 30; // Error: Cannot assign to 'x' because it is a constant.
 
 // con el readonly modifier, no se puede asignar un nuevo valor a la variable point
 

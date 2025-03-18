@@ -1,6 +1,5 @@
 import Link from "next/link"
 import { ThemeToggle } from "./theme-toggle"
-
 export function Navigation() {
   return (
     <header className="border-b">

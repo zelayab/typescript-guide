@@ -63,3 +63,4 @@ logs
 # Netlify
 .netlify
 netlify.log
+.qodo
