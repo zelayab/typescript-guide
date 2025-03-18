@@ -1,10 +1,15 @@
 'use client'
 
-import { useState } from "react"
-import { Editor } from "@monaco-editor/react"
-import { Button } from "./ui/button"
-import { cn } from "@/lib/utils"
 import { runTests } from "@/lib/test-runner"
+import { cn } from "@/lib/utils"
+import { Editor } from "@monaco-editor/react"
+import { useState } from "react"
+import { Button } from "./ui/button"
+
+interface TestResult {
+  passed: boolean
+  message?: string
+}
 
 interface ExerciseEditorProps {
   initialCode: string

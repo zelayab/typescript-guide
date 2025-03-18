@@ -59,3 +59,7 @@ logs
 # Cache directories
 .cache
 .next/cache/
+
+# Netlify
+.netlify
+netlify.log
