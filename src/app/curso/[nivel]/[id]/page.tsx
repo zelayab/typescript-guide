@@ -1,12 +1,12 @@
-'use client';
-
 import TemaDetalle from '@/components/tema-detalle';
-import { useParams } from 'next/navigation';
 
-export default function TemaDetallePage() {
-    const params = useParams();
-    const nivel = params.nivel as string;
-    const id = params.id as string;
+interface PageProps {
+    params: {
+        nivel: string;
+        id: string;
+    }
+}
 
-    return <TemaDetalle id={id} nivel={nivel} />;
+export default function TemaDetallePage({ params }: PageProps) {
+    return <TemaDetalle id={params.id} nivel={params.nivel} />;
 } 

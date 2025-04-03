@@ -65,10 +65,25 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: 0 },
         },
+        shine: {
+          "0%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(100%)" }
+        },
+        "shine-slow": {
+          "0%": { transform: "translateX(-200%)" },
+          "100%": { transform: "translateX(200%)" }
+        },
+        "bounce-x": {
+          "0%, 100%": { transform: "translateX(0)" },
+          "50%": { transform: "translateX(25%)" }
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "shine": "shine 1s linear infinite",
+        "shine-slow": "shine-slow 3s linear infinite",
+        "bounce-x": "bounce-x 1s ease-in-out infinite",
       },
       typography: {
         DEFAULT: {
@@ -94,11 +109,26 @@ module.exports = {
             }
           }
         }
+      },
+      perspective: {
+        'none': 'none',
+        'sm': '250px',
+        'md': '500px',
+        'lg': '1000px',
+        'xl': '2000px',
       }
     },
   },
   plugins: [
     require("tailwindcss-animate"),
-    require("@tailwindcss/typography")
+    require("@tailwindcss/typography"),
+    function({ addUtilities }) {
+      addUtilities({
+        '.perspective': {
+          'perspective': '1000px',
+          'transform-style': 'preserve-3d',
+        },
+      })
+    }
   ],
 } 

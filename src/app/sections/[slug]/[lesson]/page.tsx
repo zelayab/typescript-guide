@@ -2,6 +2,7 @@
 
 import { QuizModal } from '@/components/quiz/quiz-modal'
 import { Button } from '@/components/ui/button'
+import { Card } from '@/components/ui/card'
 import { ChevronLeft } from 'lucide-react'
 import Link from 'next/link'
 import Prism from 'prismjs'
@@ -36,11 +37,10 @@ export default function LessonPage({ params, searchParams }: PageProps) {
   useEffect(() => {
     async function loadContent() {
       try {
-        const response = await fetch(
-          `/api/content?slug=${params.slug}&lesson=${params.lesson}${
-            searchParams.ejercicio ? `&ejercicio=${searchParams.ejercicio}` : ''
-          }`
-        )
+        const url = `/api/content?slug=${params.slug}&lesson=${params.lesson}${
+          searchParams.ejercicio ? `&ejercicio=${searchParams.ejercicio}` : ''
+        }`
+        const response = await fetch(url)
         const data = await response.json()
         setContent(data)
       } catch (error) {
@@ -57,36 +57,35 @@ export default function LessonPage({ params, searchParams }: PageProps) {
   }, [params.slug, params.lesson, searchParams.ejercicio])
 
   useEffect(() => {
-    Prism.highlightAll()
-  }, [content])
+    if (content.content) {
+      Prism.highlightAll()
+    }
+  }, [content.content])
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50 py-12">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="flex items-center justify-between mb-8">
-          <Link href={`/sections/${params.slug}`}>
-            <Button variant="outline">
-              <ChevronLeft className="w-4 h-4 mr-2" />
-              Volver a la sección
-            </Button>
-          </Link>
-        </div>
+    <div className="min-h-screen bg-gray-900 p-8">
+      <div className="max-w-4xl mx-auto">
+        <Link href={`/sections/${params.slug}`}>
+          <Button variant="ghost" className="mb-8 text-white">
+            <ChevronLeft className="w-5 h-5 mr-2" />
+            Volver a la sección
+          </Button>
+        </Link>
 
-        <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-8">
-          <div className="prose prose-lg max-w-none">
-            <h1 className="text-2xl font-bold mb-4">{content.title}</h1>
+        <Card className="bg-black/30 border-white/10">
+          <div className="p-8">
+            <h1 className="text-3xl font-bold text-white mb-8">{content.title}</h1>
             {content.description && (
-              <p className="text-gray-600 mb-6">{content.description}</p>
+              <p className="text-gray-300 mb-8">{content.description}</p>
             )}
-            <div className="bg-[#1e1e1e] rounded-lg p-6 my-4">
-              <pre className="!bg-transparent">
-                <code className="language-typescript">
-                  {content.content}
-                </code>
+
+            <div className="bg-[#1e1e1e] rounded-lg overflow-hidden">
+              <pre className="language-typescript p-4">
+                <code className="language-typescript">{content.content}</code>
               </pre>
             </div>
           </div>
-        </div>
+        </Card>
       </div>
 
       <QuizModal
