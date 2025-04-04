@@ -1,6 +1,7 @@
 export interface Example {
   code: string
   fileName: string
+  description?: string
 }
 
 export interface Exercise {
@@ -14,6 +15,10 @@ export interface Section {
   id: string
   title: string
   description: string
+  examples: Array<{
+    code: string
+    fileName: string
+  }>
   href: string
 }
 

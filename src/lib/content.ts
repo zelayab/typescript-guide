@@ -201,7 +201,10 @@ export async function getLevelContent(nivel: string): Promise<Level | null> {
   return {
     title: levelData.title,
     description: levelData.description,
-    sections: levelData.sections
+    sections: levelData.sections.map(section => ({
+      ...section,
+      examples: []
+    }))
   }
 }
 
