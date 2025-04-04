@@ -54,6 +54,20 @@ export function FeaturesSection({ onQuizOpen }: FeaturesSectionProps) {
   return (
     <section className="py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="text-center mb-20"
+      >
+        <h2 className="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-transparent bg-clip-text animate-gradient">
+          Aprende TypeScript de forma interactiva
+        </h2>
+        <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+          Domina el lenguaje a través de ejemplos prácticos, ejercicios interactivos y evaluaciones personalizadas
+        </p>
+      </motion.div>
+
+      <motion.div
         variants={container}
         initial="hidden"
         animate="show"
