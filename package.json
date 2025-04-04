@@ -24,8 +24,11 @@
     "@types/prismjs": "^1.26.5",
     "@types/react": "^18.2.61",
     "@types/react-dom": "^18.2.19",
+    "@types/react-syntax-highlighter": "^15.5.13",
+    "@types/three": "^0.175.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "framer-motion": "^12.6.3",
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.344.0",
     "next": "14.1.0",
@@ -34,11 +37,13 @@
     "prismjs": "^1.29.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-syntax-highlighter": "^15.6.1",
     "rehype-highlight": "^7.0.2",
     "rehype-prism-plus": "^2.0.0",
     "remark-gfm": "^4.0.1",
     "tailwind-merge": "^2.6.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "three": "^0.175.0"
   },
   "devDependencies": {
     "@netlify/plugin-nextjs": "^5.10.0",

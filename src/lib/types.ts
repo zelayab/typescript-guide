@@ -1,22 +1,31 @@
+export interface Example {
+  code: string
+  fileName: string
+}
+
+export interface Exercise {
+  title: string
+  description: string
+  initialCode: string
+  solution: string
+}
+
 export interface Section {
   id: string
   title: string
   description: string
-  examples: {
-    code: string
-    fileName?: string
-  }[]
-  exercises: {
-    title: string
-    description: string
-    initialCode: string
-    solution: string
-  }[]
+  href: string
 }
 
-export interface LevelContent {
+export interface Level {
   title: string
   description: string
   sections: Section[]
-  prerequisites: string[]
+}
+
+export interface SectionContent {
+  title: string
+  description: string
+  examples: Example[]
+  exercises: Exercise[]
 } 

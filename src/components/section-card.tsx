@@ -1,6 +1,8 @@
-import { Card } from "./ui/card"
-import { CodeBlock } from "./code-block"
+'use client'
+
 import type { Section } from "@/lib/types"
+import { CodeBlock } from "./code-block"
+import { Card } from "./ui/card"
 
 interface SectionCardProps {
   section: Section

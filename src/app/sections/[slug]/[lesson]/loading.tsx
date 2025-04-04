@@ -1,51 +1,29 @@
 export default function Loading() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50">
-      <div className="max-w-7xl mx-auto p-4">
-        <div className="mb-8">
-          <div className="w-32 h-10 bg-gray-200 rounded-lg animate-pulse" />
+    <div className="min-h-screen bg-gray-900 flex items-center justify-center">
+      <div className="relative">
+        {/* Círculo exterior */}
+        <div className="w-20 h-20 border-4 border-blue-500/20 rounded-full relative">
+          {/* Círculo animado */}
+          <div className="w-20 h-20 border-4 border-blue-500 rounded-full absolute top-0 left-0 border-t-transparent animate-gradient-spin" />
+        </div>
+        
+        {/* Texto de carga */}
+        <div className="mt-6 text-center">
+          <span className="text-blue-400 font-medium bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent animate-pulse">
+            Cargando...
+          </span>
         </div>
 
-        <div className="w-96 h-12 bg-gray-200 rounded-lg animate-pulse mb-8" />
+        {/* Círculos decorativos */}
+        <div className="absolute -top-10 -left-10 w-6 h-6 bg-purple-500/20 rounded-full animate-ping [animation-duration:3s]" />
+        <div className="absolute -bottom-8 -right-8 w-4 h-4 bg-blue-500/20 rounded-full animate-ping [animation-duration:2s] [animation-delay:0.2s]" />
+        <div className="absolute top-0 -right-6 w-3 h-3 bg-cyan-500/20 rounded-full animate-ping [animation-duration:2.5s] [animation-delay:0.4s]" />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div className="h-full">
-            <div className="sticky top-4">
-              <div className="rounded-lg border border-purple-100 overflow-hidden bg-white shadow-sm">
-                <div className="border-b border-purple-100 bg-purple-50/50 px-6 py-4">
-                  <h2 className="text-2xl font-semibold text-purple-800">Teoría</h2>
-                </div>
-                <div className="p-6">
-                  <div className="space-y-3">
-                    <div className="w-full h-4 bg-gray-200 rounded animate-pulse" />
-                    <div className="w-5/6 h-4 bg-gray-200 rounded animate-pulse" />
-                    <div className="w-4/6 h-4 bg-gray-200 rounded animate-pulse" />
-                    <div className="w-full h-4 bg-gray-200 rounded animate-pulse" />
-                    <div className="w-3/4 h-4 bg-gray-200 rounded animate-pulse" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="h-full">
-            <div className="sticky top-4">
-              <div className="rounded-lg border border-blue-100 overflow-hidden bg-white shadow-sm">
-                <div className="border-b border-blue-100 bg-blue-50/50 px-6 py-4">
-                  <h2 className="text-2xl font-semibold text-blue-800">Ejemplo Práctico</h2>
-                </div>
-                <div className="p-6">
-                  <div className="space-y-3">
-                    <div className="w-full h-4 bg-gray-200 rounded animate-pulse" />
-                    <div className="w-3/4 h-4 bg-gray-200 rounded animate-pulse" />
-                    <div className="w-5/6 h-4 bg-gray-200 rounded animate-pulse" />
-                    <div className="w-full h-4 bg-gray-200 rounded animate-pulse" />
-                    <div className="w-2/3 h-4 bg-gray-200 rounded animate-pulse" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        {/* Destellos */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+          <div className="w-32 h-32 bg-blue-500/5 rounded-full animate-pulse" />
+          <div className="w-40 h-40 bg-purple-500/5 rounded-full animate-pulse absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
         </div>
       </div>
     </div>

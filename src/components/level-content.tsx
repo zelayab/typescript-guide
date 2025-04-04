@@ -1,9 +1,10 @@
-import { CodeBlock } from "./code-block"
+'use client'
+
+import type { Section } from "@/lib/types"
 import { SectionCard } from "./section-card"
-import type { LevelContent } from "@/lib/types"
 
 interface LevelContentProps {
-  content: LevelContent
+  content:any 
 }
 
 export function LevelContent({ content }: LevelContentProps) {
@@ -15,7 +16,7 @@ export function LevelContent({ content }: LevelContentProps) {
       </div>
 
       <div className="grid gap-6">
-        {content.sections.map((section) => (
+        {content.sections.map((section: Section) => (
           <SectionCard 
             key={section.id}
             section={section}
